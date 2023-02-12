@@ -15,12 +15,8 @@ class Pessoa extends Model
         'nome'
     ];
 
-    /**
-     * @return HasMany
-     * @description get all posts for the category
-     */
-    public function contatos(): BelongsTo
+    public function contatos()
     {
-        return $this->hasMany(Contato::class);
+        return $this->hasMany(Contato::class, "id", "pessoa_id");
     }
 }

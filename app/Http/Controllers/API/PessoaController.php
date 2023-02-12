@@ -18,7 +18,7 @@ class PessoaController extends Controller
     public function index()
     {
         $pessoas = Pessoa::all();
-        return response(['pessoas' => PessoaResource::collection($pessoas), 'message' => 'Listado com sucesso'], 200);
+        return response(['data' => PessoaResource::collection($pessoas), 'message' => 'Listado com sucesso'], 200);
     }
 
     /**
@@ -41,7 +41,7 @@ class PessoaController extends Controller
 
         $pessoa = Pessoa::create($data);
 
-        return response(['pessoa' => new PessoaResource($pessoa), 'message' => 'Cadastrado com Sucesso'], 201);
+        return response(['data' => new PessoaResource($pessoa), 'message' => 'Cadastrado com Sucesso'], 201);
     }
 
     /**
@@ -52,7 +52,7 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        return response(['pessoa' => new PessoaResource($pessoa), 'message' => 'Busca realizada com sucesso'], 200);
+        return response(['data' => new PessoaResource($pessoa), 'message' => 'Busca realizada com sucesso'], 200);
     }
 
     /**
@@ -66,7 +66,7 @@ class PessoaController extends Controller
     {
         $pessoa->update($request->all());
 
-        return response(['pessoa' => new PessoaResource($pessoa), 'message' => 'Dados atualizados com sucesso'], 200);
+        return response(['data' => new PessoaResource($pessoa), 'message' => 'Dados atualizados com sucesso'], 200);
     }
 
     /**

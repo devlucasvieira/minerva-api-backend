@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [App\Http\Controllers\API\AuthController::class, 'register']);
 Route::post('login', [App\Http\Controllers\API\AuthController::class, 'login']);
 
-Route::apiResource('pessoas', App\Http\Controllers\API\PessoaController::class)->middleware('auth:api');
-Route::apiResource('tipo-contatos', App\Http\Controllers\API\TipoContatoController::class)->middleware('auth:api');
-Route::apiResource('contatos', App\Http\Controllers\API\ContatoController::class)->middleware('auth:api');
+Route::apiResource('pessoas', App\Http\Controllers\API\PessoaController::class);
+Route::apiResource('tipo-contatos', App\Http\Controllers\API\TipoContatoController::class);
+Route::apiResource('contatos', App\Http\Controllers\API\ContatoController::class);

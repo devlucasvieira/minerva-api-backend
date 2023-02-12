@@ -18,7 +18,7 @@ class ContatoController extends Controller
     public function index()
     {
         $contatos = Contato::all();
-        return response(['contatos' => ContatoResource::collection($contatos), 'message' => 'Listado com sucesso'], 200);
+        return response(['data' => ContatoResource::collection($contatos), 'message' => 'Listado com sucesso'], 200);
     }
 
     /**
@@ -43,7 +43,7 @@ class ContatoController extends Controller
 
         $contato = Contato::create($data);
 
-        return response(['contato' => new ContatoResource($contato), 'message' => 'Cadastrado com Sucesso'], 201);
+        return response(['data' => new ContatoResource($contato), 'message' => 'Cadastrado com Sucesso'], 201);
     }
 
     /**
@@ -54,7 +54,7 @@ class ContatoController extends Controller
      */
     public function show(Contato $contato)
     {
-        return response(['contato' => new ContatoResource($contato), 'message' => 'Busca realizada com sucesso'], 200);
+        return response(['data' => new ContatoResource($contato), 'message' => 'Busca realizada com sucesso'], 200);
     }
 
     /**
@@ -68,7 +68,7 @@ class ContatoController extends Controller
     {
         $contato->update($request->all());
 
-        return response(['contato' => new ContatoResource($contato), 'message' => 'Dados atualizados com sucesso'], 200);
+        return response(['data' => new ContatoResource($contato), 'message' => 'Dados atualizados com sucesso'], 200);
     }
 
     /**
