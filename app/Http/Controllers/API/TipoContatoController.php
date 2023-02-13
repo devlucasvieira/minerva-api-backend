@@ -18,7 +18,7 @@ class TipoContatoController extends Controller
     public function index()
     {
         $tipoContatos = TipoContato::all();
-        return response(['tipoContatos' => TipoContatoResource::collection($tipoContatos), 'message' => 'Listado com sucesso'], 200);
+        return response(['data' => TipoContatoResource::collection($tipoContatos), 'message' => 'Listado com sucesso'], 200);
     }
 
     /**
@@ -41,7 +41,7 @@ class TipoContatoController extends Controller
 
         $tipoContatos = TipoContato::create($data);
 
-        return response(['tipoContatos' => new TipoContatoResource($tipoContatos), 'message' => 'Cadastrado com Sucesso'], 201);
+        return response(['data' => new TipoContatoResource($tipoContatos), 'message' => 'Cadastrado com Sucesso'], 201);
     }
 
     /**
@@ -52,7 +52,7 @@ class TipoContatoController extends Controller
      */
     public function show(TipoContato $tipoContato)
     {
-        return response(['tipoContato' => new TipoContatoResource($tipoContato), 'message' => 'Busca realizada com sucesso'], 200);
+        return response(['data' => new TipoContatoResource($tipoContato), 'message' => 'Busca realizada com sucesso'], 200);
     }
 
     /**
@@ -66,7 +66,7 @@ class TipoContatoController extends Controller
     {
         $tipoContato->update($request->all());
 
-        return response(['tipoContatos' => new TipoContatoResource($tipoContato), 'message' => 'Dados atualizados com sucesso'], 200);
+        return response(['data' => new TipoContatoResource($tipoContato), 'message' => 'Dados atualizados com sucesso'], 200);
     }
 
     /**

@@ -1,0 +1,46 @@
+version: "3"
+services:
+  #PHP Service
+  app-ouvi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: app-ouvi
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app-ouvi
+      SERVICE_TAGS: dev
+      PHP_OPCACHE_VALIDATE_TIMESTAMPS: 1
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - .docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver-ouvi:
+    image: nginx:alpine
+    container_name: webserver-ouvi
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - .docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local

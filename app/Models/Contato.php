@@ -17,22 +17,14 @@ class Contato extends Model
         'tipo_contato_id'
     ];
 
-     /**
-     * @return HasOne
-     * @description get the category for the blog post.
-     */
-    public function pessoa(): HasOne
-    {
-        return $this->belongsTo(Pessoa::class);
-    }
+	public function pessoa()
+	{
+		return $this->hasOne(Pessoa::class, "id", "pessoa_id");
+	}
 
-     /**
-     * @return BelongsTo
-     * @description get the category for the blog post.
-     */
     public function tipoContato(): HasOne
     {
-        return $this->belongsTo(TipoContato::class);
+        return $this->hasOne(TipoContato::class, "id", "tipo_contato_id");
     }
 
 }
