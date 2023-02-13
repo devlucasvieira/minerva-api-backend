@@ -1,16 +1,16 @@
 version: "3"
 services:
   #PHP Service
-  app-ouvi:
+  app-minerva:
     build:
       context: .
       dockerfile: Dockerfile
     image: digitalocean.com/php
-    container_name: app-ouvi
+    container_name: app-minerva
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app-ouvi
+      SERVICE_NAME: app-minerva
       SERVICE_TAGS: dev
       PHP_OPCACHE_VALIDATE_TIMESTAMPS: 1
     working_dir: /var/www
@@ -21,9 +21,9 @@ services:
       - app-network
 
   #Nginx Service
-  webserver-ouvi:
+  webserver-minerva:
     image: nginx:alpine
-    container_name: webserver-ouvi
+    container_name: webserver-minerva
     restart: unless-stopped
     tty: true
     ports:
